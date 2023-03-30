@@ -1,6 +1,7 @@
 import "./styles.css";
 import Note from "./Note.js";
 import { useState, useEffect } from "react";
+import axios from "axios";
 
 export default function App(props) {
   const [notas, setNotas] = useState([]);
@@ -10,10 +11,12 @@ export default function App(props) {
   useEffect(() => {
     setLoading(true);
     setTimeout(() => {
-      fetch("https://jsonplaceholder.typicode.com/posts")
-        .then((response) => response.json())
-        .then((json) => {
-          setNotas(json);
+      axios
+        .get("https://jsonplaceholder.typicode.com/posts")
+        .then((response) => {
+          const { data } = response;
+          console.log(response);
+          setNotas(data);
           setLoading(false);
         });
     }, 2000);
@@ -25,6 +28,7 @@ export default function App(props) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+
     const noteToAddToState = {
       id: notas.length + 1,
       title: newNote,

@@ -11,14 +11,12 @@ export default function App(props) {
   useEffect(() => {
     setLoading(true);
     setTimeout(() => {
-      axios
-        .get("https://jsonplaceholder.typicode.com/posts")
-        .then((response) => {
-          const { data } = response;
-          console.log(response);
-          setNotas(data);
-          setLoading(false);
-        });
+      axios.get(" http://localhost:3001/persons").then((response) => {
+        const { data } = response;
+        console.log(response);
+        setNotas(data);
+        setLoading(false);
+      });
     }, 2000);
   }, []);
 

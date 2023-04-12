@@ -26,12 +26,13 @@ export default function App(props) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-
     const noteToAddToState = {
       id: notas.length + 1,
-      title: newNote,
-      body: newNote
+      name: newNote,
+      number: newNote
     };
+
+    axios.post(" http://localhost:3001/persons",noteToAddToState);
 
     setNotas(notas.concat(noteToAddToState));
     setNewNote("");

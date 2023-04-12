@@ -1,11 +1,11 @@
-const Note = ({ id, userId, title, body }) => {
+const Note = ({ name, id, number,  }) => {
   return (
     <div>
       <p>{id}</p>
       <p>
-        <strong>{title}</strong>
+        <strong>{name}</strong>
       </p>
-      {body}
+      {number}
     </div>
   );
 };
